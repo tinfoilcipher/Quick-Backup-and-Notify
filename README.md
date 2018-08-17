@@ -32,5 +32,5 @@ sending only.</br>
 These variables will define how the backup runs and which data is backed up
 **$strSource = The folder to be backed up, by default all child folders are backed up**<br/>
 **strTarget = The folder that data is being backed up to, this will be automatically modified to be unique**<br/>
-**strLogName = An itentifiable name for your logs
+**strLogName = An itentifiable name for your logs**
 
