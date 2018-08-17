@@ -14,22 +14,23 @@ and sends an email. The default configuration is to email over an open relay ove
 
 ## CONFIGURATION
 ### MAIL CONFIG
-The following variables should be set</br>
-**$strSMTPServer - The FQDN or routable IP address of the SMTP server being used for send**br>
-**$strEmailFrom - Sender is irrelevant in accordance with the SMTP protocol, the domain is all that matters**<br>
-**$strEmailTo - Valid SMTP address in the recipient domain**<br>
-**$strSubject - Email Subject**<br>
+The following variables should be set<br/>
+**$strSMTPServer - The FQDN or routable IP address of the SMTP server being used for send**<br/>
+**$strEmailFrom - Sender is irrelevant in accordance with the SMTP protocol, the domain is all that matters**<br/>
+**$strEmailTo - Valid SMTP address in the recipient domain**<br/>
+**$strSubject - Email Subject**<br/>
 
 ### AUTHENTICATION CONFIG
 These variables can remain commented out if there is an open relay to the target SMTP server and are used for authenticated
 sending only.</br>
 **In the event of needing to use authenticated sending it is strongly advised not to use plain text to to run the encrypted_string_generation.ps1 script to generate an encrypted password**</br>
-**$strCryptString - .txt file containing the encrypted password for authenticting user, output of encrypted_string_generation.ps1**
-**$strUsername - Authenticating username**
+<br/>
+**$strCryptString - .txt file containing the encrypted password for authenticting user, output of encrypted_string_generation.ps1**<br/>
+**$strUsername - Authenticating username**<br/>
 
 ### BACKUP CONFIG
 These variables will define how the backup runs and which data is backed up
-**$strSource = The folder to be backed up, by default all child folders are backed up**
-**strTarget = The folder that data is being backed up to, this will be automatically modified to be unique**
+**$strSource = The folder to be backed up, by default all child folders are backed up**<br/>
+**strTarget = The folder that data is being backed up to, this will be automatically modified to be unique**<br/>
 **strLogName = An itentifiable name for your logs
 
