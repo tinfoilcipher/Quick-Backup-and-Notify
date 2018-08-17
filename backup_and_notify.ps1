@@ -22,20 +22,20 @@ $strSubject = "Data Backup Report" #--Email Subject
 ####################################################################################################################################
 
 ####################################################################################################################################
-# Backup Routine
+# Backup Config Block
 $strDate = Get-Date -format "MM-dd-yyyy"
 $strSource = "C:\FolderName" #--Source for copy, a local path works best
 $strTarget = "\\Server\Share\Folder" #--Target for copy, UNC works best
 $strTargetReal = ($strTarget + $strDate) #--DO NOT
-$strLog = ("C:\FolderName\log" + $strDate + ".txt") #--Log location, .txt file works best
+$strLogName = "BACKUP_LOG_NAME" #--Set a name to identify the name
+$strLog = ("C:\FolderName\" + $strLogName + $strDate + ".txt") #--Log location, .txt file works best
+####################################################################################################################################
+
+# Backup
 robocopy $strSource $strTargetReal /MT:8 /MIR /SEC /SECFIX /R:5 /W:0 /LOG:"$strLog" /TEE #--This statement runs a mirror with secfix on a daily basis to a new folder, any robocopy syntax is fine
-####################################################################################################################################
 
-####################################################################################################################################
-# Send Email Notification
+#Sending Methods
 $strBody = Get-Content $strLog
-Send-MailMessage -To $strEmailTo -From $strEmailFrom -Subject $strSubject -Body $strBody -smtpServer $strSMTPServer #--Sends the log from the robocopy, comment out if using auth
-
-#Alternative Sending Methods
+Send-MailMessage -To $strEmailTo -From $strEmailFrom -Subject $strSubject -Body $strBody -smtpServer $strSMTPServer #--Open Relay
 # Send-MailMessage -To $strEmailTo -From $strEmailFrom -Subject $strSubject -Body $strBody -smtpServer $strSMTPServer -Credential $strCredential -usessl #--Use Authentication and SSL
 # Send-MailMessage -To $strEmailTo -From $strEmailFrom -Subject $strSubject -Body $strBody -smtpServer $strSMTPServer -Credential $strCredential #--Use Authentication without SSL
